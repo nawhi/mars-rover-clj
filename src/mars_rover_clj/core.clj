@@ -10,10 +10,18 @@
     :S :E
     :E :N))
 
+(defn rotate-right [old-face]
+  (case old-face
+    :N :E
+    :E :S
+    :S :W
+    :W :N))
+
 (defn next-position [position move grid]
   (case move
     \M {:x (mod (inc (:x position)) (:height grid)) :y 0 :face "N"}
     \L {:x (:x position) :y (:y position) :face (rotate-left (:face position))}
+    \R {:x (:x position) :y (:y position) :face (rotate-right (:face position))}
     ))
 
 (defn rover-position

@@ -16,6 +16,11 @@
     (is (= "0:0:S" (rover-position GRID-NO-OBSTACLES "LL")))
     (is (= "0:0:E" (rover-position GRID-NO-OBSTACLES "LLL")))
     (is (= "0:0:N" (rover-position GRID-NO-OBSTACLES "LLLL"))))
+  (testing "R rotates rover clockwise"
+    (is (= "0:0:E" (rover-position GRID-NO-OBSTACLES "R")))
+    (is (= "0:0:S" (rover-position GRID-NO-OBSTACLES "RR")))
+    (is (= "0:0:W" (rover-position GRID-NO-OBSTACLES "RRR")))
+    (is (= "0:0:N" (rover-position GRID-NO-OBSTACLES "RRRR"))))
   (testing "Rover wraps round at the end of the grid"
     (is (= "1:0:N" (rover-position GRID-NO-OBSTACLES "MMMMMMMMMMM")))))
 
