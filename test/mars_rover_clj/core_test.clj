@@ -11,6 +11,8 @@
     (is (= "1:0:N" (rover-position GRID-NO-OBSTACLES "M")))
     (is (= "2:0:N" (rover-position GRID-NO-OBSTACLES "MM")))
     (is (= "7:0:N" (rover-position GRID-NO-OBSTACLES "MMMMMMM"))))
+  (testing "L rotates rover anticlockwise"
+    (is (= "0:0:W" (rover-position GRID-NO-OBSTACLES "L"))))
   (testing "Rover wraps round at the end of the grid"
     (is (= "1:0:N" (rover-position GRID-NO-OBSTACLES "MMMMMMMMMMM")))))
 
