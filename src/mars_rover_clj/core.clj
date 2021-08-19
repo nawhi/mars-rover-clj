@@ -19,10 +19,9 @@
 
 (defn next-position [position move grid]
   (case move
-    \M {:x (mod (inc (:x position)) (:height grid)) :y 0 :face "N"}
-    \L {:x (:x position) :y (:y position) :face (rotate-left (:face position))}
-    \R {:x (:x position) :y (:y position) :face (rotate-right (:face position))}
-    ))
+    \M (update position :x #(mod (inc %) (:height grid)))
+    \L (update position :face rotate-left)
+    \R (update position :face rotate-right)))
 
 (defn rover-position
   "Given a grid and a list of moves, calculate the rover's final position"
