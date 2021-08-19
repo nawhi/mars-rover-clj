@@ -17,9 +17,12 @@
     :S :W
     :W :N))
 
+
+
 (defn next-position [position move grid]
   (case move
-    \M (update position :x #(mod (inc %) (:height grid)))
+    \M (let [dimension (case (:face position) (:N :S) :x (:E :W) :y)]
+         (update position dimension #(mod (inc %) (:height grid))))
     \L (update position :face rotate-left)
     \R (update position :face rotate-right)))
 
