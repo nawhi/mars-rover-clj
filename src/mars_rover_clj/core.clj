@@ -9,4 +9,6 @@
   (loop [position {:x 0 :y 0 :face "N"} moves moves]
     (if (empty? moves)
       (grid-to-string position)
-      (recur { :x 1 :y 0 :face "N"} (subs moves 1)))))
+      (recur
+        { :x (mod (inc (:x position)) (:height grid)) :y 0 :face "N"}
+        (subs moves 1)))))
