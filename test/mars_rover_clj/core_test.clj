@@ -32,6 +32,11 @@
     (is (= "0:0:S" (rover-position GRID-NO-OBSTACLES "MLLM")))
     (is (= "0:0:W" (rover-position GRID-NO-OBSTACLES "RMMLLMM"))))
 
+  (testing "Examples from readme"
+    ; TODO: this is correct - x and y are the wrong way round in all the other tests!!
+    ;(is (= "2:3:N" (rover-position GRID-NO-OBSTACLES "MMRMMLM")))
+    (is (= "0:0:N" (rover-position GRID-NO-OBSTACLES "MMMMMMMMMM"))))
+
   (testing "Rover wraps round at the end of the grid"
     (is (= "1:0:N" (rover-position GRID-NO-OBSTACLES "MMMMMMMMMMM")))
     (is (= "9:0:S" (rover-position GRID-NO-OBSTACLES "LLM")))
