@@ -2,7 +2,7 @@
   (:require [clojure.test :refer :all]
             [mars-rover-clj.core :refer :all]))
 
-(def GRID-NO-OBSTACLES { :x 10 :y 10 :obstacles ()})
+(def GRID-NO-OBSTACLES {:x 10 :y 10 :obstacles ()})
 
 (deftest a-test
   (testing "Rover starts on origin facing north"
@@ -25,9 +25,12 @@
     (is (= "0:2:E" (rover-position GRID-NO-OBSTACLES "RMM")))
     (is (= "1:2:N" (rover-position GRID-NO-OBSTACLES "RMMLM")))
     (is (= "3:3:S" (rover-position GRID-NO-OBSTACLES "RMMLMRMLMMLL")))
-    (is (= "0:0:S" (rover-position GRID-NO-OBSTACLES "MLLM"))))
+    (is (= "0:0:S" (rover-position GRID-NO-OBSTACLES "MLLM")))
+    (is (= "0:0:W" (rover-position GRID-NO-OBSTACLES "RMMLLMM"))))
   (testing "Rover wraps round at the end of the grid"
-    (is (= "1:0:N" (rover-position GRID-NO-OBSTACLES "MMMMMMMMMMM")))))
+    (is (= "1:0:N" (rover-position GRID-NO-OBSTACLES "MMMMMMMMMMM")))
+    (is (= "9:0:S" (rover-position GRID-NO-OBSTACLES "LLM")))
+    (is (= "0:9:W" (rover-position GRID-NO-OBSTACLES "LM")))))
 
 
 ; wraps around
