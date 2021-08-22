@@ -17,16 +17,16 @@
     :S :W
     :W :N))
 
-(defn- dimension-of [face]
+(defn- direction-of [face]
   (case face (:N :S) :y (:E :W) :x))
 
-(defn- update-dimension-of [face]
+(defn- update-direction-of [face]
   (case face (:N :E) inc (:S :W) dec))
 
 (defn- move-forward [old-position grid]
-  (let [dimension (dimension-of (:face old-position))
-        update-dimension (update-dimension-of (:face old-position))]
-    (update old-position dimension #(mod (update-dimension %) (dimension grid)))))
+  (let [direction (direction-of (:face old-position))
+        inc-or-dec (update-direction-of (:face old-position))]
+    (update old-position direction #(mod (inc-or-dec %) (direction grid)))))
 
 (defn- next-position [position move grid]
   (case move
