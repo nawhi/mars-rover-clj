@@ -23,14 +23,14 @@
 (defn- update-dimension-of [face]
   (case face (:N :E) inc (:S :W) dec))
 
-(defn- move-forward [position move grid]
-  (let [dimension (dimension-of (:face position))
-        update-dimension (update-dimension-of (:face position))]
-    (update position dimension #(mod (update-dimension %) (dimension grid)))))
+(defn- move-forward [old-position grid]
+  (let [dimension (dimension-of (:face old-position))
+        update-dimension (update-dimension-of (:face old-position))]
+    (update old-position dimension #(mod (update-dimension %) (dimension grid)))))
 
 (defn- next-position [position move grid]
   (case move
-    \M (move-forward position move grid)
+    \M (move-forward position grid)
     \L (update position :face rotate-left)
     \R (update position :face rotate-right)))
 
