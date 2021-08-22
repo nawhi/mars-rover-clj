@@ -9,9 +9,9 @@
     (is (= "0:0:N" (rover-position GRID-NO-OBSTACLES ""))))
 
   (testing "M moves rover forward one square"
-    (is (= "1:0:N" (rover-position GRID-NO-OBSTACLES "M")))
-    (is (= "2:0:N" (rover-position GRID-NO-OBSTACLES "MM")))
-    (is (= "7:0:N" (rover-position GRID-NO-OBSTACLES "MMMMMMM"))))
+    (is (= "0:1:N" (rover-position GRID-NO-OBSTACLES "M")))
+    (is (= "0:2:N" (rover-position GRID-NO-OBSTACLES "MM")))
+    (is (= "0:7:N" (rover-position GRID-NO-OBSTACLES "MMMMMMM"))))
 
   (testing "L rotates rover anticlockwise"
     (is (= "0:0:W" (rover-position GRID-NO-OBSTACLES "L")))
@@ -26,21 +26,20 @@
     (is (= "0:0:N" (rover-position GRID-NO-OBSTACLES "RRRR"))))
 
   (testing "Rover moves in the direction it is facing"
-    (is (= "0:2:E" (rover-position GRID-NO-OBSTACLES "RMM")))
-    (is (= "1:2:N" (rover-position GRID-NO-OBSTACLES "RMMLM")))
+    (is (= "2:0:E" (rover-position GRID-NO-OBSTACLES "RMM")))
+    (is (= "2:1:N" (rover-position GRID-NO-OBSTACLES "RMMLM")))
     (is (= "3:3:S" (rover-position GRID-NO-OBSTACLES "RMMLMRMLMMLL")))
     (is (= "0:0:S" (rover-position GRID-NO-OBSTACLES "MLLM")))
     (is (= "0:0:W" (rover-position GRID-NO-OBSTACLES "RMMLLMM"))))
 
   (testing "Examples from readme"
-    ; TODO: this is correct - x and y are the wrong way round in all the other tests!!
-    ;(is (= "2:3:N" (rover-position GRID-NO-OBSTACLES "MMRMMLM")))
+    (is (= "2:3:N" (rover-position GRID-NO-OBSTACLES "MMRMMLM")))
     (is (= "0:0:N" (rover-position GRID-NO-OBSTACLES "MMMMMMMMMM"))))
 
   (testing "Rover wraps round at the end of the grid"
-    (is (= "1:0:N" (rover-position GRID-NO-OBSTACLES "MMMMMMMMMMM")))
-    (is (= "9:0:S" (rover-position GRID-NO-OBSTACLES "LLM")))
-    (is (= "0:9:W" (rover-position GRID-NO-OBSTACLES "LM")))))
+    (is (= "0:1:N" (rover-position GRID-NO-OBSTACLES "MMMMMMMMMMM")))
+    (is (= "0:9:S" (rover-position GRID-NO-OBSTACLES "LLM")))
+    (is (= "9:0:W" (rover-position GRID-NO-OBSTACLES "LM")))))
 
 
 ; wraps around

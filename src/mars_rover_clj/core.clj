@@ -18,7 +18,7 @@
     :W :N))
 
 (defn dimension-of [face]
-  (case face (:N :S) :x (:E :W) :y))
+  (case face (:N :S) :y (:E :W) :x))
 
 (defn update-dimension-of [face]
   (case face (:N :E) inc (:S :W) dec))
