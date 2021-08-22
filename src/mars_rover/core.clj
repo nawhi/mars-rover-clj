@@ -1,4 +1,4 @@
-(ns mars-rover-clj.core
+(ns mars-rover.core
   (:require [clojure.string :as str]))
 
 (defn- grid-to-string [grid] (str/join ":" (list (:x grid) (:y grid) (name (:face grid)))))
@@ -23,10 +23,10 @@
 (defn- update-direction-of [face]
   (case face (:N :E) inc (:S :W) dec))
 
-(defn- move-forward [old-position grid]
-  (let [direction (direction-of (:face old-position))
-        inc-or-dec (update-direction-of (:face old-position))]
-    (update old-position direction #(mod (inc-or-dec %) (direction grid)))))
+(defn- move-forward [{face :face :as old-pos} grid]
+  (let [direction (direction-of face)
+        inc-or-dec (update-direction-of face)]
+    (update old-pos direction #(mod (inc-or-dec %) (direction grid)))))
 
 (defn- next-position [position move grid]
   (case move

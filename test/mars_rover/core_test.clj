@@ -1,6 +1,6 @@
-(ns mars-rover-clj.core-test
+(ns mars-rover.core-test
   (:require [clojure.test :refer :all]
-            [mars-rover-clj.core :refer :all]))
+            [mars-rover.core :refer :all]))
 
 (def GRID-NO-OBSTACLES {:x 10 :y 10 :obstacles ()})
 
