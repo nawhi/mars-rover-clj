@@ -31,6 +31,8 @@
     \L (update position :face rotate-left)
     \R (update position :face rotate-right)))
 
+(defn coords [position] (select-keys position [:x :y]))
+
 (defn rover-position
   "Given a grid and a list of moves, calculate the rover's final position"
   [grid moves]
@@ -39,4 +41,6 @@
       (grid-to-string position)
       (let [move (first moves)
             new-pos (next-position position move grid)]
-        (recur new-pos (subs moves 1))))))
+        (if (some #{(coords new-pos)} (:obstacles grid))
+          (str "O:" (grid-to-string position))
+          (recur new-pos (subs moves 1)))))))
